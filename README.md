@@ -1,9 +1,15 @@
-# Image-Classifier
-# Image Classification with TensorFlow and Flask
+# CSCN73010: assignment 2 group 7
+
+Members: Bowen, Yao, Yuval
+
+Original repo: https://github.com/soumyapriyagoswami/Image-Classifier
+
+## Image-Classifier
+## Image Classification with TensorFlow and Flask
 
 This repository contains code for a simple image classification project using a Convolutional Neural Network (CNN) created with TensorFlow. The project involves training the model on the CIFAR-10 dataset and deploying it in a Flask web application.
 
-## Prerequisites
+### Prerequisites
 
 Make sure you have the following libraries installed:
 
@@ -19,7 +25,7 @@ Install the required libraries using:
 pip install numpy opencv-python matplotlib tensorflow flask
 ```
 
-## Usage
+### Usage
 
 1. **Training the Model:**
    - Run `model_creation.py` to create and train the CNN model on the CIFAR-10 dataset.
@@ -47,7 +53,7 @@ pip install numpy opencv-python matplotlib tensorflow flask
 
    This script loads the trained model and preprocesses an example image, showcasing the classification result.
 
-## Directory Structure
+### Directory Structure
 
 - **`uploads/`:** Contains uploaded images from the web application.
 - **`model/`:** Stores the trained model (`image_classifier.model`).
@@ -56,10 +62,10 @@ pip install numpy opencv-python matplotlib tensorflow flask
 - **`model_creation.py`:** Script for creating and training the CNN model.
 - **`result.py`:** Script for analyzing the model's classification result.
 
-## Contributing
+### Contributing
 
  Your feedback and suggestions are highly appreciated!
 
-## License
+### License
 
 This project is licensed under the [MIT License](LICENSE).
