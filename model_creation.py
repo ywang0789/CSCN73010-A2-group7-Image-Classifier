@@ -1,9 +1,7 @@
 """Script to load a pre-trained model and make predictions on images."""
 
 # Import necessary libraries
-import cv2 as cv
 import matplotlib.pyplot as plt
-import numpy as np
 from keras import datasets, layers, models
 
 # Load CIFAR-10 dataset
