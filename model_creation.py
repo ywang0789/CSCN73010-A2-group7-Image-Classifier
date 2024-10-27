@@ -1,3 +1,5 @@
+"""Script to load a pre-trained model and make predictions on images."""
+
 # Import necessary libraries
 import cv2 as cv
 import matplotlib.pyplot as plt
