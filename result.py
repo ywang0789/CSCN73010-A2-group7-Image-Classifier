@@ -1,21 +1,36 @@
-import numpy as np
+"""Script to create, train, and save a CNN model for image classification."""
+
 import cv2 as cv
 import matplotlib.pyplot as plt
-from tensorflow.keras import datasets, models
+import numpy as np
+from keras import datasets, models
 
 # Load CIFAR-10 dataset
-(training_images, training_labels), (testing_images, testing_labels) = datasets.cifar10.load_data()
+(training_images, training_labels), (testing_images, testing_labels) = (
+    datasets.cifar10.load_data()
+)
 training_images, testing_images = training_images / 255, testing_images / 255
 
 # Class names for CIFAR-10
-class_names = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+class_names = [
+    "plane",
+    "car",
+    "bird",
+    "cat",
+    "deer",
+    "dog",
+    "frog",
+    "horse",
+    "ship",
+    "truck",
+]
 
 # Display some sample images from the dataset
 for i in range(16):
     plt.subplot(4, 4, i + 1)
     plt.xticks([])
     plt.yticks([])
-    plt.imshow(training_images[i], cmap=plt.cm.binary)
+    plt.imshow(training_images[i], cmap=plt.cm.binary)  # pylint: disable=no-member
     plt.xlabel(class_names[training_labels[i][0]])
 plt.show()
 
@@ -24,15 +39,15 @@ plt.show()
 
 # Load the pre-trained model
 
-model = models.load_model('image_classifier.model')
+model = models.load_model("image_classifier.model")
 
 # Load and preprocess the image to make a prediction
 
-img = cv.imread("car.png")
+img = cv.imread("car.png")  # pylint: disable=no-member
 
-img = cv.resize(img, (32, 32))  # Resize the image to match CIFAR-10 image size
+img = cv.resize(img, (32, 32))  # pylint: disable=no-member
 img = img / 255.00  # Normalize the pixel values to be between 0 and 1
-img=img[None,:]
+img = img[None, :]
 
 # Make a prediction
 prediction = model.predict(img)
