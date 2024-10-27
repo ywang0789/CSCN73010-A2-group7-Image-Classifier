@@ -39,7 +39,7 @@ plt.show()
 
 # Load the pre-trained model
 
-model = models.load_model("image_classifier.model")
+model = models.load_model("image_classifier.keras")
 
 # Load and preprocess the image to make a prediction
 

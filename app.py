@@ -8,7 +8,7 @@ from keras import models
 app = Flask(__name__)
 
 # Load the pre-trained model
-model = models.load_model("image_classifier.model")
+model = models.load_model("image_classifier.keras")
 
 # Class names for CIFAR-10
 class_names = [
@@ -42,7 +42,7 @@ def index():
         file = request.files["file"]
         if file:
             # Save the uploaded image
-            img_path = "uploads/uploaded_image.png"
+            img_path = "static/uploads/uploaded_image.png"
             file.save(img_path)
 
             # Preprocess the image
