@@ -50,8 +50,8 @@ def index():
 
             # Make a prediction
             prediction = model.predict(img)
-            index = np.argmax(prediction)
-            result = class_names[index]
+            predicted_index = np.argmax(prediction)
+            result = class_names[predicted_index]
 
             return render_template("index.html", result=result, image_path=img_path)
 
