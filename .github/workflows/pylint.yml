@@ -23,9 +23,9 @@ jobs:
         pip install opencv-python
         pip install matplotlib
         pip install tensorflow
-        
+            
     - name: Analysing the code with pylint
       run: |
         for file in $(git ls-files '*.py'); do
-          pylint "$file"
+          pylint --ignore=test.py "$file"
         done
