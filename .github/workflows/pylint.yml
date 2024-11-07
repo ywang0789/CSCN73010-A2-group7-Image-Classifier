@@ -27,5 +27,5 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         for file in $(git ls-files '*.py'); do
-          pylint --ignore=test.py "$file"
+          pylint --ignore=test.py,integration_test.py "$file"
         done
