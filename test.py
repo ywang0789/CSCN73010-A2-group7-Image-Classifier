@@ -2,7 +2,6 @@ import pytest
 import numpy as np
 from keras import datasets
 from app import app, preprocess_image
-import model_creation
 
 @pytest.fixture
 def client():
