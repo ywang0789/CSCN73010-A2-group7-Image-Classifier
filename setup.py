@@ -18,5 +18,17 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
     ],
+    install_requires=[
+        "flask",
+        "numpy",
+        "opencv-python",
+        "matplotlib",
+        "tensorflow",
+    ],
+    extras_require={
+        "test": [
+            "pytest",
+        ],
+    },
     python_requires=">=3.11",
 )
