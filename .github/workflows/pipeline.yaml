@@ -26,7 +26,7 @@ jobs:
       - name: Analyzing
         run: |
           for file in $(git ls-files '*.py'); do
-            pylint --ignore=test.py,integration_test.py,setup.py "$file"
+            pylint --ignore=unit_test.py,integration_test.py,setup.py "$file"
           done
 
   build:
@@ -85,7 +85,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          pytest test.py
+          pytest ./tests/unit_test.py
 
   integration-test:
     runs-on: ubuntu-latest
@@ -114,4 +114,4 @@ jobs:
 
       - name: Run integration tests
         run: |
-          pytest integration_test.py
+          pytest ./tests/integration_test.py
