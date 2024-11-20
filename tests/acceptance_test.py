@@ -1,5 +1,57 @@
+import os
+from io import BytesIO
+
 import pytest
 
+from app import app
 
-def test_acceptance():
-    assert True
+"""
+Test files:
+test_images/test_image_car.png
+"""
+
+
+@pytest.fixture
+def client():
+    app.testing = True
+    app.config["UPLOAD_FOLDER"] = "static/uploads"
+    with app.test_client() as client:
+        yield client
+
+
+def test_car_image(client):
+
+    test_image_path = "test_images/test_image_car.png"
+    expected_result = "car"
+    with open(test_image_path, "rb") as img_file:
+        data = {"file": (BytesIO(img_file.read()), test_image_path)}
+
+    response = client.post("/", data=data, content_type="multipart/form-data")
+    response_data = response.data.decode("utf-8")
+    actual_result = response_data.split("<h2>Result: ")[1].split("</h2>")[0]
+
+    assert response.status_code == 200
+    assert actual_result == expected_result
+
+
+def test_image_uploaded(client):
+    """submits a file and checks if it was uploaded in the static/uploads folder and compares the images"""
+
+    test_image_path = "test_images/test_image_car.png"
+    with open(test_image_path, "rb") as img_file:
+        data = {"file": (BytesIO(img_file.read()), test_image_path)}
+
+    response = client.post("/", data=data, content_type="multipart/form-data")
+
+    assert response.status_code == 200
+    assert b"static/uploads/uploaded_image.png" in response.data
+
+    assert os.path.exists("static/uploads/uploaded_image.png")
+
+    with open("static/uploads/uploaded_image.png", "rb") as img_file:
+        uploaded_image = img_file.read()
+
+    with open(test_image_path, "rb") as img_file:
+        original_image = img_file.read()
+
+    assert uploaded_image == original_image
