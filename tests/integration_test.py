@@ -80,4 +80,4 @@ def test_image_sad_result_not_equal_plane_sad(client):
     actual_result = response_data.split("<h2>Result: ")[1].split("</h2>")[0]
 
     assert response.status_code == 200
-    assert actual_result == expected_result
+    assert actual_result != expected_result
