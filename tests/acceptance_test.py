@@ -20,6 +20,17 @@ def client():
 
 
 def test_car_image(client):
+    """
+    Scenario:
+    Given there is a machine-learning model
+    And the machine learning model is already trained
+    And there is an image containing an object the machine-learning model should be able to predict (plane, car, bird, cat, deer, dog, frog, horse, ship, truck)
+
+    When the user uploads that image
+    And the user selects the “predict” button.
+
+    Then the machine learning model should output the correct classification of the object inside of the picture uploaded by the user.
+    """
 
     test_image_path = "test_images/test_image_car.png"
     expected_result = "car"
@@ -35,7 +46,16 @@ def test_car_image(client):
 
 
 def test_image_uploaded(client):
-    """submits a file and checks if it was uploaded in the static/uploads folder and compares the images"""
+    """
+    Scenario:
+    Given there is a button to upload an image
+    And the user can access the application.
+
+    When the user clicks upload
+
+    Then the image is saved on the server for processing.
+
+    """
 
     test_image_path = "test_images/test_image_car.png"
     with open(test_image_path, "rb") as img_file:
