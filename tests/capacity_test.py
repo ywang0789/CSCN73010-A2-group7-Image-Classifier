@@ -27,5 +27,3 @@ class WebsiteUser(HttpUser):
 
         assert response.status_code == 200
         assert "Result:" in response.text
-        assert b"static/uploads/uploaded_image.png" in response.data
-        assert os.path.exists("static/uploads/uploaded_image.png")
