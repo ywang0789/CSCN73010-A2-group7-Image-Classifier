@@ -146,6 +146,38 @@ jobs:
       - name: Run acceptance tests
         run: |
           pytest -v ./tests/acceptance_test.py
+  
+          name: Python Test
+
+  capacitytest:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r test_requirements.txt
+
+    - name: Run flask app
+      working-directory: ./
+      run: python app.py &
+
+    - name: Run tests
+      working-directory: ./
+      run: locust -f test_capacity.py --headless -u 1 -r 1 --host http://localhost:9000 --run-time 1m --html=locustreport.html
+
+    - name: Archive capacity test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: capacitytestreport
+        path: locustreport.html
 
   docker-push:
     runs-on: ubuntu-latest
