@@ -27,7 +27,7 @@ jobs:
       - name: Analyzing
         run: |
           for file in $(git ls-files '*.py'); do
-            pylint --ignore=unit_test.py,integration_test.py,acceptance_test.py,setup.py, capacity_test.py "$file"
+            pylint --ignore=unit_test.py,integration_test.py,acceptance_test.py,setup.py,capacity_test.py "$file"
           done
 
   build:
@@ -172,7 +172,7 @@ jobs:
 
     - name: Run tests
       working-directory: ./
-      run: locust -f capacity_test.py --headless -u 1 -r 1 --host http://localhost:9000 --run-time 1m --html=locustreport.html
+      run: locust -f ./tests/capacity_test.py --headless -u 1 -r 1 --host http://localhost:9000 --run-time 1m --html=locustreport.html
 
     - name: Archive capacity test report
       uses: actions/upload-artifact@v3
