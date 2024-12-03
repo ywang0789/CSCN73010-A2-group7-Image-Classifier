@@ -146,8 +146,6 @@ jobs:
       - name: Run acceptance tests
         run: |
           pytest -v ./tests/acceptance_test.py
-  
-          name: Python Test
 
   capacitytest:
     runs-on: ubuntu-latest
