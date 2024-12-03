@@ -26,7 +26,7 @@ jobs:
       - name: Analyzing
         run: |
           for file in $(git ls-files '*.py'); do
-            pylint --ignore=unit_test.py,integration_test.py,acceptance_test.py,setup.py "$file"
+            pylint --ignore=unit_test.py,integration_test.py,acceptance_test.py,setup.py, capacity_test.py "$file"
           done
 
   build:
