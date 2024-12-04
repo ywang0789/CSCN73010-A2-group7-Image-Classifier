@@ -170,7 +170,7 @@ jobs:
 
     - name: Run tests
       working-directory: ./
-      run: locust -f ./tests/capacity_test.py --headless -u 1 -r 1 --host http://localhost:5000 --run-time 1m --html=locustreport.html
+      run: locust -f ./tests/capacity_test.py --headless -u 10 -r 1 --host http://localhost:5000 --run-time 1m --html=locustreport.html
 
     - name: Archive capacity test report
       uses: actions/upload-artifact@v4
