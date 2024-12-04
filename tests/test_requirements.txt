@@ -1,3 +1,4 @@
+locust
 pytest
 numpy
 keras
